@@ -3,7 +3,7 @@ const flash = require('connect-flash');
 
 // Configuración de sesiones
 const sessionConfig = {
-  secret: 'keyboard cat', // Reemplaza con una clave secreta más segura
+  secret: 'perrito', 
   resave: false,
   saveUninitialized: false,
 };
@@ -22,10 +22,8 @@ const auth = (req, res, next) => {
 };
 
 module.exports = (app) => {
-  // Agregar middlewares de sesiones y flash a Express.js:
+  
   app.use(expressSession(sessionConfig)); 
   app.use(flash()); 
-
-  // Agregar el middleware de autenticación:
   app.use(auth);
 }
