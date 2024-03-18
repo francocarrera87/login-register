@@ -79,14 +79,14 @@ app.get('/', auth, async (req, res) => {
   res.render('home', { items });
 });
 
-app.get('/table',  async (req, res) => { 
+app.get('/table', auth, async (req, res) => { 
   const page = req.query.page ? parseInt(req.query.page) : 1;
   const limit = req.query.limit ? parseInt(req.query.limit) : 5;
   const items = await manager.getItemsPaginated(page, limit);
   res.render('table', { items: items.docs, ...items });
 });
 
-app.get('/chat', (req, res) => { 
+app.get('/chat', auth, (req, res) => { 
   res.render('chat', {});
 });
 
